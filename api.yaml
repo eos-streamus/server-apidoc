@@ -87,7 +87,64 @@ paths:
                   updatedAt: 1591605887479
                   from: -157770000000
                   to: -31626000000
-
+  /films:
+    get:
+      tags:
+      - films
+      summary: Get all films
+      operationId: getAllFilms
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Film'
+              example:
+                - id: 1230
+                  name: Parasite
+                  duration: 132
+    post:
+      tags:
+        - films
+      summary: "Add a new film"
+      operationId: "addFilm"
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                file:
+                  type: string
+                  format: binary
+      responses:
+        200:
+          description: upload successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  duration:
+                    type: integer
+        400:
+          description: Upload unsuccessful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reason:
+                    type: string
 components:
   schemas:
     Film:
