@@ -8,6 +8,86 @@ info:
   license:
     name: "Apache 2.0"
     url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+
+paths:
+  /artists:
+    get:
+      tags:
+      - artists
+      summary: Get all artists
+      operationId: getAllArtists
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Artist'
+              example:
+                - id: 136
+                  name: Pink Floyd
+                  albums:
+                  - id: 118
+                    name: Animals
+                    createdAt: 1591601762518
+                    updatedAt: 1591601762542
+                    tracks:
+                    - id: 1240
+                      name: Pigs on the Wing (Part 1)
+                      duration: 100
+                      trackNumber: 1
+                    - id: 1241
+                      name: Dogs
+                      duration: 100
+                      trackNumber: 2
+                    - id: 1242
+                      name: Pigs (Three Different Ones)
+                      duration: 100
+                      trackNumber: 3
+                    - id: 1243
+                      name: Sheep
+                      duration: 100
+                      trackNumber: 4
+                    - id: 1244
+                      name: Pigs on the Wing (Part 2)
+                      duration: 100
+                      trackNumber: 5
+                  members:
+                    - id: 182
+                      albums: []
+                      firstName: Syd
+                      lastName: Barrett
+                      dateOfBirth: -756954000000
+                      createdAt: 1591605887479
+                      updatedAt: 1591605887479
+                      from: -157770000000
+                      to: -31626000000
+                    - id: 185
+                      albums: []
+                      firstName: Roger
+                      lastName: Waters
+                      dateOfBirth: -830656800000
+                      createdAt: 1591605887488
+                      updatedAt: 1591605887488
+                - id: 185
+                  albums: []
+                  firstName: Roger
+                  lastName: Waters
+                  dateOfBirth: -830656800000
+                  createdAt: 1591605887488
+                  updatedAt: 1591605887488
+                - id: 182
+                  albums: []
+                  firstName: Syd
+                  lastName: Barrett
+                  dateOfBirth: -756954000000
+                  createdAt: 1591605887479
+                  updatedAt: 1591605887479
+                  from: -157770000000
+                  to: -31626000000
+
 components:
   schemas:
     Film:
@@ -85,3 +165,7 @@ components:
           type: "array"
           items:
             $ref: '#/components/schemas/Album'
+    Artist:
+      anyOf:
+        - $ref: '#/components/schemas/Band'
+        - $ref: '#/components/schemas/Musician'
