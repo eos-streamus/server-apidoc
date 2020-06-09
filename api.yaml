@@ -5,6 +5,9 @@ info:
   title: "Streamus"
   contact:
     email: "henrik.akesson@outlook.com"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
 components:
   schemas:
     Film:
@@ -42,7 +45,7 @@ components:
           type: "array"
           items:
             $ref: '#/components/schemas/Track'
-    PersonMusician:
+    Person:
       type: "object"
       properties:
         firstName:
@@ -55,30 +58,14 @@ components:
           type: "integer"
         updatedAt:
           type: "integer"
-    NamedMusician:
-      type: "object"
+    Musician:
+      allOf:
+        - $ref: '#/components/schemas/Person'
+        - type: "object"
+          properties:
+            name: 
+              type: "string"
       properties:
-        name:
-          type: "string"
-        albums:
-          type: "array"
-          items:
-            $ref: '#/components/schemas/Album'
-    PersonAndNamedMusician:
-      type: "object"
-      properties:
-        name:
-          type: "string"
-        firstName:
-          type: "string"
-        lastName:
-          type: "string"
-        dateOfBirth: 
-          type: "integer"
-        createdAt:
-          type: "integer"
-        updatedAt:
-          type: "integer"
         albums:
           type: "array"
           items:
@@ -93,10 +80,7 @@ components:
         members:
           type: "array"
           items:
-            anyOf:
-              - $ref: '#/components/schemas/NamedMusician'
-              - $ref: '#/components/schemas/PersonMusician'
-              - $ref: '#/components/schemas/PersonAndNamedMusician'
+            $ref: '#/components/schemas/Musician'
         albums:
           type: "array"
           items:
