@@ -1,0 +1,103 @@
+openapi: 3.0.1
+info:
+  description: "Streamus server REST Api"
+  version: "1.0.0"
+  title: "Streamus"
+  contact:
+    email: "henrik.akesson@outlook.com"
+components:
+  schemas:
+    Film:
+      type: "object"
+      properties:
+        id:
+          type: "integer"
+        name:
+          type: "string"
+        duration:
+          type: "integer"
+    Track:
+      type: "object"
+      properties:
+        id:
+          type: "integer"
+        name:
+          type: "string"
+        duration:
+          type: "integer"
+        trackNumber:
+          type: "integer"
+    Album:
+      type: "object"
+      properties:
+        id:
+          type: "integer"
+        name:
+          type: "string"
+        createdAt:
+          type: "integer"
+        updatedAt:
+          type: "integer"
+        tracks:
+          type: "array"
+          items:
+            $ref: '#/components/schemas/Track'
+    PersonMusician:
+      type: "object"
+      properties:
+        firstName:
+          type: "string"
+        lastName:
+          type: "string"
+        dateOfBirth: 
+          type: "integer"
+        createdAt:
+          type: "integer"
+        updatedAt:
+          type: "integer"
+    NamedMusician:
+      type: "object"
+      properties:
+        name:
+          type: "string"
+        albums:
+          type: "array"
+          items:
+            $ref: '#/components/schemas/Album'
+    PersonAndNamedMusician:
+      type: "object"
+      properties:
+        name:
+          type: "string"
+        firstName:
+          type: "string"
+        lastName:
+          type: "string"
+        dateOfBirth: 
+          type: "integer"
+        createdAt:
+          type: "integer"
+        updatedAt:
+          type: "integer"
+        albums:
+          type: "array"
+          items:
+            $ref: '#/components/schemas/Album'
+    Band:
+      type: "object"
+      properties:
+        id:
+          type: "integer"
+        name:
+          type: "string"
+        members:
+          type: "array"
+          items:
+            anyOf:
+              - $ref: '#/components/schemas/NamedMusician'
+              - $ref: '#/components/schemas/PersonMusician'
+              - $ref: '#/components/schemas/PersonAndNamedMusician'
+        albums:
+          type: "array"
+          items:
+            $ref: '#/components/schemas/Album'
