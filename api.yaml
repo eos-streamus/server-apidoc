@@ -114,6 +114,27 @@ paths:
         404:
           description: Film not found
           content: {}
+  /film/{id}/stream:
+    get:
+      tags:
+        - films
+      summary: Get a stream for a film
+      operationId: streamFilm
+      parameters: 
+        - name: id
+          in: path
+          description: Id of requested film
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: successful operation
+          content:
+            video/mp4:
+              schema:
+                type: string
+                format: binary
   /films:
     get:
       tags:
