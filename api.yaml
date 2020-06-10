@@ -138,7 +138,6 @@ paths:
           content:
             application/json:
               schema:
-                type: object
                 $ref: '#/components/schemas/Band'
               example:
                 id: 1230
