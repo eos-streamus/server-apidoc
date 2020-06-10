@@ -87,6 +87,34 @@ paths:
                   updatedAt: 1591605887479
                   from: -157770000000
                   to: -31626000000
+  /artist/{id}:
+    get:
+      tags:
+        - artists
+      summary: Find artist by id
+      operationId: getArtistById
+      parameters: 
+        - name: id
+          in: path
+          description: Id of requested artist
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Artist'
+              example: 
+                id: 1230
+                name: Parasite
+                duration: 132
+        404:
+          description: Film not found
+          content: {}
+    
   /film/{id}:
     get:
       tags:
