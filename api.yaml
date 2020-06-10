@@ -87,6 +87,33 @@ paths:
                   updatedAt: 1591605887479
                   from: -157770000000
                   to: -31626000000
+  /film/{id}:
+    get:
+      tags:
+        - films
+      summary: Find film by id
+      operationId: getFilmById
+      parameters: 
+        - name: id
+          in: path
+          description: Id of requested film
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Film'
+              example: 
+                id: 1230
+                name: Parasite
+                duration: 132
+        404:
+          description: Film not found
+          content: {}
   /films:
     get:
       tags:
