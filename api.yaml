@@ -115,6 +115,38 @@ paths:
           description: Film not found
           content: {}
     
+  /band:
+    post:
+      tags:
+        - artists
+        - bands
+      summary:
+        Create a new Band
+      operationId: createBand
+      requestBody:
+        description: Data of band to create
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+      responses:
+        200:
+          description: Operation successful
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/Band'
+              example:
+                id: 1230
+                name: "Emperor"
+        400:
+          description: Operation failed
+          
+  # FILMS
   /film/{id}:
     get:
       tags:
