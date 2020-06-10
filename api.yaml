@@ -144,7 +144,48 @@ paths:
                 name: "Emperor"
         400:
           description: Operation failed
-          
+  /musician:
+    post:
+      tags:
+        - artists
+        - musicians
+      summary: Create a new musician
+      operationId: createMusician
+      requestBody:
+        description: 
+          Data of Musician to create.
+          If name is not defined, either person.id should be a valid person id or
+          person.firstName and person.lastName should be valid.
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                person:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    firstName:
+                      type: string
+                    lastName:
+                      type: string
+                    dateOfBirth:
+                      type: integer
+                name:
+                  type: string
+      responses:
+        200:
+          description: Operation successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Musician'
+              example:
+                id: 1230
+                name: "Test"
+        400:
+          description: Operation failed
   # FILMS
   /film/{id}:
     get:
@@ -307,6 +348,8 @@ components:
         - $ref: '#/components/schemas/Person'
         - type: "object"
           properties:
+            id:
+              type: integer
             name: 
               type: "string"
       properties:
