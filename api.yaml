@@ -29,31 +29,7 @@ paths:
                 - id: 136
                   name: Pink Floyd
                   albums:
-                  - id: 118
-                    name: Animals
-                    createdAt: 1591601762518
-                    updatedAt: 1591601762542
-                    tracks:
-                    - id: 1240
-                      name: Pigs on the Wing (Part 1)
-                      duration: 100
-                      trackNumber: 1
-                    - id: 1241
-                      name: Dogs
-                      duration: 100
-                      trackNumber: 2
-                    - id: 1242
-                      name: Pigs (Three Different Ones)
-                      duration: 100
-                      trackNumber: 3
-                    - id: 1243
-                      name: Sheep
-                      duration: 100
-                      trackNumber: 4
-                    - id: 1244
-                      name: Pigs on the Wing (Part 2)
-                      duration: 100
-                      trackNumber: 5
+                  - 118
                   members:
                     - id: 182
                       albums: []
@@ -407,7 +383,7 @@ components:
         albums:
           type: "array"
           items:
-            $ref: '#/components/schemas/Album'
+            type: integer
     Band:
       type: "object"
       properties:
@@ -423,7 +399,7 @@ components:
         albums:
           type: "array"
           items:
-            $ref: '#/components/schemas/Album'
+            type: integer
     Member:
       allOf:
         - $ref: '#/components/schemas/Musician'
