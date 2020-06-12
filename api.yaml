@@ -78,6 +78,8 @@ paths:
                   dateOfBirth: -830656800000
                   createdAt: 1591605887488
                   updatedAt: 1591605887488
+                  from: '1968-01-01'
+                  to: null
                 - id: 182
                   albums: []
                   firstName: Syd
@@ -218,9 +220,13 @@ paths:
                       type: integer
               properties:
                 from:
-                  type: integer
+                  type: string
                 to:
-                  type: integer
+                  type: string
+              example: 
+                musicianId: 142
+                from: '2000-01-01'
+                to: '2010-01-01'
       responses:
         200:
           description: Operation successful
@@ -409,11 +415,21 @@ components:
         members:
           type: "array"
           items:
-            $ref: '#/components/schemas/Musician'
+            type: object
+            $ref: '#/components/schemas/Member'
         albums:
           type: "array"
           items:
             $ref: '#/components/schemas/Album'
+    Member:
+      allOf:
+        - $ref: '#/components/schemas/Musician'
+        - type: "object"
+          properties:
+            from: 
+              type: string
+            to: 
+              type: string
     Artist:
       anyOf:
         - $ref: '#/components/schemas/Band'
