@@ -234,6 +234,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Band'
+        400:
+          description: Operation unsuccessful. Usually due to overlapping memberships of a musician to the same band.
+        
   # FILMS
   /film/{id}:
     get:
