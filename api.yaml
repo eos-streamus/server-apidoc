@@ -215,7 +215,46 @@ paths:
                 $ref: '#/components/schemas/Band'
         400:
           description: Operation unsuccessful. Usually due to overlapping memberships of a musician to the same band.
-        
+  /albums:
+    post:
+      tags:
+        - albums
+      summary: Create a new album
+      operationId: createAlbum
+      requestBody:
+        description: 
+          Data of Album to create.
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                releaseDate:
+                  type: string
+                artistIds:
+                  type: array
+                  items:
+                    type: integer
+                tracks:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      trackNumber:
+                        type: integer
+                      songId:
+                        type: integer
+      responses:
+        200:
+          description: Operation successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Album'
+        400:
+          description: Operation failed, invalid data. For example, invalid artist or song ids, invalid track numbers (should be 1, 2, ..., n)
   # FILMS
   /film/{id}:
     get:
@@ -351,13 +390,17 @@ components:
         name:
           type: "string"
         createdAt:
-          type: "string"
+          type: "integer"
         updatedAt:
-          type: "string"
+          type: "integer"
         tracks:
           type: "array"
           items:
             $ref: '#/components/schemas/Track'
+        artists:
+          type: "array"
+          items:
+            $ref: '#/components/schemas/Artist'
     Person:
       type: "object"
       properties:
@@ -365,12 +408,12 @@ components:
           type: "string"
         lastName:
           type: "string"
-        dateOfBirth:
-          type: "string"
+        dateOfBirth: 
+          type: "integer"
         createdAt:
-          type: "string"
+          type: "integer"
         updatedAt:
-          type: "string"
+          type: "integer"
     Musician:
       allOf:
         - $ref: '#/components/schemas/Person'
