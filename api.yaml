@@ -255,6 +255,28 @@ paths:
                 $ref: '#/components/schemas/Album'
         400:
           description: Operation failed, invalid data. For example, invalid artist or song ids, invalid track numbers (should be 1, 2, ..., n)
+  /album/{id}:
+    get:
+      tags:
+        - albums
+      summary: Find an album by id
+      operationId: getAlbumById
+      parameters: 
+        - name: id
+          in: path
+          description: Id of requested album
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Operation successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Album'
+        404:
+          description: Not found
   # FILMS
   /film/{id}:
     get:
