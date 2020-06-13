@@ -35,36 +35,34 @@ paths:
                       albums: []
                       firstName: Syd
                       lastName: Barrett
-                      dateOfBirth: -756954000000
-                      createdAt: 1591605887479
-                      updatedAt: 1591605887479
-                      from: -157770000000
-                      to: -31626000000
+                      dateOfBirth: '1946-01-06'
+                      createdAt: '2020-06-08 22:13:02'
+                      updatedAt: '2020-06-08 22:13:02'
+                      from: '1965-01-01'
+                      to: '1968-01-01'
                     - id: 185
                       albums: []
                       firstName: Roger
                       lastName: Waters
-                      dateOfBirth: -830656800000
-                      createdAt: 1591605887488
-                      updatedAt: 1591605887488
+                      dateOfBirth: '1943-09-06'
+                      createdAt: '2020-06-08 22:12:58'
+                      updatedAt: '2020-06-08 22:12:58'
+                      from: '1965-01-01'
+                      to: '1985-01-01'
                 - id: 185
                   albums: []
                   firstName: Roger
                   lastName: Waters
-                  dateOfBirth: -830656800000
-                  createdAt: 1591605887488
-                  updatedAt: 1591605887488
-                  from: '1968-01-01'
-                  to: null
+                  dateOfBirth: '1943-09-06'
+                  createdAt: '2020-06-08 22:12:58'
+                  updatedAt: '2020-06-08 22:12:58'
                 - id: 182
                   albums: []
                   firstName: Syd
                   lastName: Barrett
-                  dateOfBirth: -756954000000
-                  createdAt: 1591605887479
-                  updatedAt: 1591605887479
-                  from: -157770000000
-                  to: -31626000000
+                  dateOfBirth: '1946-01-06'
+                  createdAt: '2020-06-08 22:13:02'
+                  updatedAt: '2020-06-08 22:13:02'
   /artist/{id}:
     get:
       tags:
@@ -86,9 +84,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/Artist'
               example: 
-                id: 1230
-                name: Parasite
-                duration: 132
+                - id: 182
+                  albums: []
+                  firstName: Syd
+                  lastName: Barrett
+                  dateOfBirth: '1946-01-06'
+                  createdAt: '2020-06-13 14:22:43'
+                  updatedAt: '2020-06-13 14:22:43'
         404:
           description: Film not found
           content: {}
@@ -119,6 +121,7 @@ paths:
               example:
                 id: 1230
                 name: "Emperor"
+                albums: []
         400:
           description: Operation failed
   /musician:
@@ -304,13 +307,11 @@ paths:
             application/json:
               schema:
                 type: object
-                properties:
-                  id:
-                    type: integer
-                  name:
-                    type: string
-                  duration:
-                    type: integer
+                $ref: '#/components/schemas/Film'
+              example:
+                id: 1230
+                name: Parasite
+                duration: 132
         400:
           description: Upload unsuccessful
           content:
@@ -350,9 +351,9 @@ components:
         name:
           type: "string"
         createdAt:
-          type: "integer"
+          type: "string"
         updatedAt:
-          type: "integer"
+          type: "string"
         tracks:
           type: "array"
           items:
@@ -364,12 +365,12 @@ components:
           type: "string"
         lastName:
           type: "string"
-        dateOfBirth: 
-          type: "integer"
+        dateOfBirth:
+          type: "string"
         createdAt:
-          type: "integer"
+          type: "string"
         updatedAt:
-          type: "integer"
+          type: "string"
     Musician:
       allOf:
         - $ref: '#/components/schemas/Person'
@@ -394,7 +395,6 @@ components:
         members:
           type: "array"
           items:
-            type: object
             $ref: '#/components/schemas/Member'
         albums:
           type: "array"
