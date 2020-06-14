@@ -94,6 +94,23 @@ paths:
         404:
           description: Film not found
           content: {}
+    delete:
+      tags:
+        - artists
+      summary: Delete an artist (band or musician) by id
+      operationId: deleteArtistById
+      parameters:
+        - name: id
+          in: path
+          description: Id of artist to delete
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Operation successful
+        404:
+          description: Artist not found
     
   /band:
     post:
