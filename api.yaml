@@ -416,6 +416,25 @@ paths:
                 properties:
                   reason:
                     type: string
+                    
+  /song/{id}:
+    delete:
+      tags:
+        - songs
+      summary: Delete a song by id
+      operationId: deleteSongById
+      parameters:
+        - name: id
+          in: path
+          description: Id of song to delete
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Operation successful
+        404:
+          description: Song not found
 components:
   schemas:
     Film:
