@@ -277,6 +277,23 @@ paths:
                 $ref: '#/components/schemas/Album'
         404:
           description: Not found
+    delete:
+      tags:
+        - albums
+      summary: Delete an album by id
+      operationId: deleteAlbumById
+      parameters:
+        - name: id
+          in: path
+          description: Id of album to delete
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Operation successful
+        404:
+          description: Album not found
   # FILMS
   /film/{id}:
     get:
