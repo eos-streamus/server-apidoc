@@ -322,6 +322,23 @@ paths:
         404:
           description: Film not found
           content: {}
+    delete:
+      tags:
+        - films
+      summary: Delete a film by id
+      operationId: deleteFilmById
+      parameters:
+        - name: id
+          in: path
+          description: Id of film to delete
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Operation successful
+        404:
+          description: Film not found
   /film/{id}/stream:
     get:
       tags:
