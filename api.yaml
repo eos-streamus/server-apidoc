@@ -111,7 +111,7 @@ paths:
           description: Operation successful
         404:
           description: Artist not found
-    
+
   /band:
     post:
       tags:
@@ -433,7 +433,7 @@ paths:
                 properties:
                   reason:
                     type: string
-                    
+
   /song/{id}:
     delete:
       tags:
@@ -452,6 +452,47 @@ paths:
           description: Operation successful
         404:
           description: Song not found
+  /songplaylist:
+    post:
+      tags:
+        - SongPlaylists
+      summary: Create a new song playlist
+      operationId: createSongPlaylist
+      requestBody:
+        description:
+          Data of Song playlist to create.
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                releaseDate:
+                  type: string
+                artistIds:
+                  type: array
+                  items:
+                    type: integer
+                tracks:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      trackNumber:
+                        type: integer
+                      songId:
+                        type: integer
+      responses:
+        200:
+          description: Operation successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SongPlaylist'
+        400:
+          description: Operation failed, invalid data. For example, invalid artist or song ids, invalid track numbers (should be 1, 2, ..., n)
+
 components:
   schemas:
     Film:
@@ -493,9 +534,43 @@ components:
           type: "array"
           items:
             $ref: '#/components/schemas/Artist'
+    SongPlaylist:
+      type: "object"
+      properties:
+        id:
+          type: "integer"
+        name:
+          type: "string"
+        createdAt:
+          type: "integer"
+        updatedAt:
+          type: "integer"
+        tracks:
+          type: "array"
+          items:
+            $ref: '#/components/schemas/Track'
+        user:
+          type: "object"
+          items:
+            $ref: '#/components/schemas/User'
     Person:
       type: "object"
       properties:
+        firstName:
+          type: "string"
+        lastName:
+          type: "string"
+        dateOfBirth: 
+          type: "integer"
+        createdAt:
+          type: "integer"
+        updatedAt:
+          type: "integer"
+    User:
+      type: "object"
+      properties:
+        email:
+          type: "string"
         firstName:
           type: "string"
         lastName:
@@ -513,7 +588,7 @@ components:
           properties:
             id:
               type: integer
-            name: 
+            name:
               type: "string"
       properties:
         albums:
