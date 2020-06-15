@@ -492,6 +492,46 @@ paths:
                 $ref: '#/components/schemas/SongPlaylist'
         400:
           description: Operation failed, invalid data. For example, invalid artist or song ids, invalid track numbers (should be 1, 2, ..., n)
+  /songplaylist/{id}:
+    get:
+      tags:
+        - SongPlaylists
+      summary: Find an song playlist by id
+      operationId: getSongPlaylistById
+      parameters: 
+        - name: id
+          in: path
+          description: Id of requested song playlist
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Operation successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SongPlaylist'
+        404:
+          description: Not found
+    delete:
+      tags:
+        - SongPlaylists
+      summary: Delete an song playlist by id
+      operationId: deleteSongPlaylistById
+      parameters:
+        - name: id
+          in: path
+          description: Id of song playlist to delete
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Operation successful
+        404:
+          description: SongPlaylist not found
+
 
 components:
   schemas:
