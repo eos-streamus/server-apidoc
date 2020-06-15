@@ -13,7 +13,7 @@ paths:
   /artists:
     get:
       tags:
-      - artists
+      - Artists
       summary: Get all artists
       operationId: getAllArtists
       responses:
@@ -66,7 +66,7 @@ paths:
   /artist/{id}:
     get:
       tags:
-        - artists
+        - Artists
       summary: Find artist by id
       operationId: getArtistById
       parameters: 
@@ -96,7 +96,7 @@ paths:
           content: {}
     delete:
       tags:
-        - artists
+        - Artists
       summary: Delete an artist (band or musician) by id
       operationId: deleteArtistById
       parameters:
@@ -115,7 +115,7 @@ paths:
   /band:
     post:
       tags:
-        - bands
+        - Artists
       summary:
         Create a new Band
       operationId: createBand
@@ -144,7 +144,7 @@ paths:
   /musician:
     post:
       tags:
-        - musicians
+        - Artists
       summary: Create a new musician
       operationId: createMusician
       requestBody:
@@ -185,7 +185,7 @@ paths:
   /band/{id}/members:
     post:
       tags:
-        - bands
+        - Artists
       summary: Add a member to a band
       operationId: addMember
       parameters: 
@@ -235,7 +235,7 @@ paths:
   /albums:
     post:
       tags:
-        - albums
+        - Albums
       summary: Create a new album
       operationId: createAlbum
       requestBody:
@@ -275,7 +275,7 @@ paths:
   /album/{id}:
     get:
       tags:
-        - albums
+        - Albums
       summary: Find an album by id
       operationId: getAlbumById
       parameters: 
@@ -296,7 +296,7 @@ paths:
           description: Not found
     delete:
       tags:
-        - albums
+        - Albums
       summary: Delete an album by id
       operationId: deleteAlbumById
       parameters:
@@ -315,7 +315,7 @@ paths:
   /film/{id}:
     get:
       tags:
-        - films
+        - Films
       summary: Find film by id
       operationId: getFilmById
       parameters: 
@@ -341,7 +341,7 @@ paths:
           content: {}
     delete:
       tags:
-        - films
+        - Films
       summary: Delete a film by id
       operationId: deleteFilmById
       parameters:
@@ -359,7 +359,7 @@ paths:
   /film/{id}/stream:
     get:
       tags:
-        - films
+        - Films
       summary: Get a stream for a film
       operationId: streamFilm
       parameters: 
@@ -380,7 +380,7 @@ paths:
   /films:
     get:
       tags:
-      - films
+      - Films
       summary: Get all films
       operationId: getAllFilms
       responses:
@@ -398,7 +398,7 @@ paths:
                   duration: 132
     post:
       tags:
-        - films
+        - Films
       summary: "Add a new film"
       operationId: "addFilm"
       requestBody:
@@ -437,7 +437,7 @@ paths:
   /song/{id}:
     delete:
       tags:
-        - songs
+        - Songs
       summary: Delete a song by id
       operationId: deleteSongById
       parameters:
