@@ -531,7 +531,36 @@ paths:
           description: Operation successful
         404:
           description: SongPlaylist not found
-
+  /songplaylist/{songPlaylistId}/{songId}:
+    post:
+      tags:
+        - SongPlaylists
+      summary: Add a song at the end of the playlist
+      operationId: addSongToPlaylist
+      parameters:
+        - name: songPlaylistId
+          in: path
+          description: Id of requested song playlist
+          required: true
+          schema:
+            type: integer
+        - name: songId
+          in: path
+          description: Id of requested song
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Operation successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SongPlaylist'
+        404:
+          description: Not found
+        400:
+          description: Bad request. For example if song is already present in playlist.
 
 components:
   schemas:
