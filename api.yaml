@@ -514,6 +514,39 @@ paths:
                 $ref: '#/components/schemas/SongPlaylist'
         404:
           description: Not found
+    put:
+      tags:
+        - SongPlaylists
+      summary: Add a track to a playlist. If track number is greater than the greatest track number + 1, it is 
+               by default set as greatest track number + 1
+      operationId: addTrackToPlaylist
+      parameters: 
+        - name: id
+          in: path
+          description: Id of requested song playlist
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        description: Track to add
+        content:
+          application/json:
+            schema:
+              type: "object"
+              properties:
+                trackNumber:
+                  type: integer
+                songId:
+                  type: integer
+      responses:
+        200:
+          description: Operation successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SongPlaylist'
+        404:
+          description: Not found
     delete:
       tags:
         - SongPlaylists
