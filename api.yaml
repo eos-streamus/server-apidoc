@@ -545,8 +545,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SongPlaylist'
+        400:
+          description: Track number <= 0 or > current size
         404:
-          description: Not found
+          description: Not found. Either SongPlaylist or Song does not exist
     delete:
       tags:
         - SongPlaylists
