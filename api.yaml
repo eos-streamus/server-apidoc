@@ -596,6 +596,33 @@ paths:
           description: Not found
         400:
           description: Bad request. For example if song is already present in playlist.
+    delete:
+      tags:
+        - SongPlaylists
+      summary: Delete song from song playlist.
+      operationId: deleteSongFromPlaylist
+      parameters:
+        - name: songPlaylistId
+          in: path
+          description: Id of requested song playlist
+          required: true
+          schema:
+            type: integer
+        - name: songId
+          in: path
+          description: Id of requested song
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Operation successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SongPlaylist'
+        404:
+          description: Not found
 
 components:
   schemas:
